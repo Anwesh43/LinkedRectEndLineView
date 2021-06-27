@@ -221,4 +221,13 @@ class RectEndLineView(ctx: Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : RectEndLineView {
+            val view : RectEndLineView = RectEndLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
