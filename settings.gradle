@@ -1,0 +1,3 @@
+include ':rectendlineview'
+include ':app'
+rootProject.name = "LinkedRectEndLineView"
