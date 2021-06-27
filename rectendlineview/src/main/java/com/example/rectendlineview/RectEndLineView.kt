@@ -9,7 +9,7 @@ import android.app.Activity
 import android.content.Context
 
 val parts: Int = 4
-val scGap: Float = 0.02f / parts
+val scGap: Float = 0.04f / parts
 val strokeFactor: Float = 90f
 val sizeFactor: Float = 3.2f
 val delay: Long = 20
@@ -41,20 +41,31 @@ fun Canvas.drawRectEndLine(scale: Float, w: Float, h: Float, paint: Paint) {
     save()
     translate(w / 2, h / 2)
     save()
-    drawLine(-us1 / 2, size / 2, us1 / 2, size / 2, paint)
     translate(0f, (h / 2 + size) * sc4)
+    if (sc1 > 0) {
+        drawLine(
+            -us1 / 2,
+            size / 2,
+            us1 / 2,
+            size / 2,
+            paint
+        )
+    }
     for (j in 0..1) {
         save()
         translate(-size / 2 + size * j, size / 2)
-        drawLine(0f, 0f, 0f, -us2, paint)
+        if (sc2 > 0f) {
+            drawLine(0f, 0f, 0f, -us2, paint)
+        }
         restore()
-        save()
     }
     restore()
     for (j in 0..1) {
         save()
         scale(1f - 2 * j, 1f)
-        drawLine(us4, -size, us3, -size, paint)
+        if (sc3 > 0f) {
+            drawLine(size / 2 + us4, -size / 2, size / 2 + us3, -size / 2, paint)
+        }
         restore()
     }
     restore()
